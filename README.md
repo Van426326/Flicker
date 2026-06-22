@@ -1,5 +1,7 @@
 # Flicker
 
+中文 | **[English](README_EN.md)**
+
 <p align="center">
   <img src="screenshots/app-logo.png" alt="Flicker" width="256" />
 </p>
