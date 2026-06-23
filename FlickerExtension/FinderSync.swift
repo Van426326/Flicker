@@ -60,6 +60,9 @@ final class FinderSync: FIFinderSync {
         if menuSettings.showCopyFileName {
             menu.addItem(withTitle: "复制文件名", action: #selector(copyFileName(_:)), keyEquivalent: "")
         }
+        menu.addItem(.separator())
+        let openRightKitItem = menu.addItem(withTitle: "打开 RightKit", action: #selector(openRightKit(_:)), keyEquivalent: "")
+        openRightKitItem.target = self
 
         return menu
     }
@@ -109,6 +112,11 @@ final class FinderSync: FIFinderSync {
         guard !urls.isEmpty else { return }
         let names = urls.map(\.lastPathComponent).joined(separator: "\n")
         copyToPasteboard(names)
+    }
+
+    @objc private func openRightKit(_ sender: NSMenuItem) {
+        guard let url = URL(string: "RightKit://main") else { return }
+        NSWorkspace.shared.open(url)
     }
 
     // MARK: - Helpers

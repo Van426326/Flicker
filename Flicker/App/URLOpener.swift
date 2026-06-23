@@ -15,21 +15,37 @@ import AppKit
 enum URLOpener {
     static let scheme = "rightkit"
 
+    enum Route {
+        case open(target: URL, app: URL)
+        case showMainWindow
+    }
+
+    static func route(for url: URL) -> Route? {
+        guard url.scheme?.lowercased() == scheme,
+              let comps = URLComponents(url: url, resolvingAgainstBaseURL: false),
+              let host = comps.host?.lowercased() else { return nil }
+
+        switch host {
+        case "open":
+            let targetPath = comps.queryItems?.first(where: { $0.name == "target" })?.value?
+                .removingPercentEncoding
+            let appPath = comps.queryItems?.first(where: { $0.name == "app" })?.value?
+                .removingPercentEncoding
+            guard let targetPath, let appPath else { return nil }
+
+            return .open(
+                target: URL(fileURLWithPath: targetPath),
+                app: URL(fileURLWithPath: appPath)
+            )
+        case "main":
+            return .showMainWindow
+        default:
+            return nil
+        }
+    }
+
     /// 处理 `RightKit://open?target=<路径>&app=<路径>`。
-    static func handle(_ url: URL) {
-        guard url.scheme?.lowercased() == scheme else { return }
-        guard let comps = URLComponents(url: url, resolvingAgainstBaseURL: false),
-              comps.host?.lowercased() == "open" else { return }
-
-        let targetPath = comps.queryItems?.first(where: { $0.name == "target" })?.value?
-            .removingPercentEncoding
-        let appPath = comps.queryItems?.first(where: { $0.name == "app" })?.value?
-            .removingPercentEncoding
-        guard let targetPath, let appPath else { return }
-
-        let targetURL = URL(fileURLWithPath: targetPath)
-        let appURL = URL(fileURLWithPath: appPath)
-
+    static func open(target targetURL: URL, with appURL: URL) {
         // 容器 App 非沙盒，可自由用任意应用打开任意文件。
         let config = NSWorkspace.OpenConfiguration()
         NSWorkspace.shared.open([targetURL], withApplicationAt: appURL, configuration: config) { _, error in

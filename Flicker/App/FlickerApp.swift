@@ -17,9 +17,6 @@ struct FlickerApp: App {
             ContentView()
                 .environmentObject(store)
                 .frame(minWidth: 560, minHeight: 420)
-                .onOpenURL { url in
-                    URLOpener.handle(url)
-                }
         }
         .windowToolbarStyle(.unified)
 
