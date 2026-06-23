@@ -32,10 +32,21 @@ enum URLOpener {
 
         // 容器 App 非沙盒，可自由用任意应用打开任意文件。
         let config = NSWorkspace.OpenConfiguration()
+        config.activates = false   // 不要激活目标应用的窗口
         NSWorkspace.shared.open([targetURL], withApplicationAt: appURL, configuration: config) { _, error in
             if let error {
                 NSLog("[Flicker] open via container failed: \(error.localizedDescription)")
             }
+        }
+
+        // 扩展通过 NSWorkspace.open(url) 投递自定义 URL 时，系统已将容器 App 激活到前台。
+        // 此处主动把自己隐藏/退到后台，避免主窗口抢占焦点。
+        if AppDelegate.launchedByURL {
+            // 冷启动场景：保持 accessory 策略，隐藏残留窗口。
+            NSApp.windows.forEach { $0.orderOut(nil) }
+        } else {
+            // 已在运行的场景：隐藏整个应用，让用户继续留在 Finder。
+            NSApp.hide(nil)
         }
     }
 }
