@@ -74,7 +74,7 @@ struct ContentView: View {
             } label: {
                 Label("启用 Finder 扩展…", systemImage: "puzzlepiece.extension")
             }
-            .help("打开系统设置中的「访达扩展」开关，勾选 Flicker")
+            .help("打开系统设置中的「访达扩展」开关，勾选 RightKit")
 
             Button {
                 openSettings()
@@ -88,7 +88,7 @@ struct ContentView: View {
             } label: {
                 Label("关于", systemImage: "info.circle")
             }
-            .help("关于 Flicker")
+            .help("关于 RightKit")
 
             Spacer()
 

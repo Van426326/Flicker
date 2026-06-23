@@ -8,7 +8,7 @@
 import AppKit
 
 extension Notification.Name {
-    static let openSettingsRequest = Notification.Name("FlickerOpenSettingsRequest")
+    static let openSettingsRequest = Notification.Name("RightKitOpenSettingsRequest")
 }
 
 @MainActor
@@ -28,7 +28,7 @@ final class AppMenuBar {
                     button.image = icon
                 } else {
                     let symbol = NSImage(systemSymbolName: "contextualmenu.and.cursorarrow",
-                                         accessibilityDescription: "Flicker")
+                                         accessibilityDescription: "RightKit")
                     symbol?.isTemplate = true
                     button.image = symbol
                 }
@@ -56,7 +56,7 @@ final class AppMenuBar {
 
         menu.addItem(.separator())
 
-        let quitItem = menu.addItem(withTitle: "退出 Flicker", action: #selector(quit), keyEquivalent: "q")
+        let quitItem = menu.addItem(withTitle: "退出 RightKit", action: #selector(quit), keyEquivalent: "q")
         quitItem.target = self
 
         return menu

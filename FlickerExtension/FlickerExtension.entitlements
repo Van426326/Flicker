@@ -6,11 +6,11 @@
 	<true/>
 	<key>com.apple.security.app-groups</key>
 	<array>
-		<string>group.com.wangyanan.flicker</string>
+		<string>group.com.van426326.rightkit</string>
 	</array>
 	<key>com.apple.security.temporary-exception.files.absolute-path.read-only</key>
 	<array>
-		<string>/Users/wangyanan/Library/Application Support/Flicker/</string>
+		<string>/Users/van426326/Library/Application Support/RightKit/</string>
 	</array>
 </dict>
 </plist>

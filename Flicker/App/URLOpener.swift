@@ -2,7 +2,7 @@
 //  URLOpener.swift
 //  Flicker
 //
-//  Handles custom URL scheme `flicker://` invoked by the Finder extension.
+//  Handles custom URL scheme `RightKit://` invoked by the Finder extension.
 //
 //  背景：Finder Sync 扩展运行在沙箱内，直接调用
 //  `NSWorkspace.shared.open([target], withApplicationAt:)` 会被系统拦截，
@@ -13,9 +13,9 @@
 import AppKit
 
 enum URLOpener {
-    static let scheme = "flicker"
+    static let scheme = "rightkit"
 
-    /// 处理 `flicker://open?target=<路径>&app=<路径>`。
+    /// 处理 `RightKit://open?target=<路径>&app=<路径>`。
     static func handle(_ url: URL) {
         guard url.scheme?.lowercased() == scheme else { return }
         guard let comps = URLComponents(url: url, resolvingAgainstBaseURL: false),
@@ -34,7 +34,7 @@ enum URLOpener {
         let config = NSWorkspace.OpenConfiguration()
         NSWorkspace.shared.open([targetURL], withApplicationAt: appURL, configuration: config) { _, error in
             if let error {
-                NSLog("[Flicker] open via container failed: \(error.localizedDescription)")
+                NSLog("[RightKit] open via container failed: \(error.localizedDescription)")
             }
         }
     }

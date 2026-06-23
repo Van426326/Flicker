@@ -50,7 +50,7 @@ struct AboutView: View {
 
     private var infoSection: some View {
         VStack(spacing: 6) {
-            Text("Flicker")
+            Text("RightKit")
                 .font(.system(size: 24, weight: .semibold))
             Text("版本 \(appVersion) (\(buildNumber))")
                 .font(.subheadline)
@@ -65,10 +65,10 @@ struct AboutView: View {
 
     private var linksSection: some View {
         VStack(spacing: 10) {
-            Link(destination: URL(string: "https://github.com/yananw-pub/Flicker")!) {
+            Link(destination: URL(string: "https://github.com/Van426326/Flicker")!) {
                 Label("GitHub 仓库", systemImage: "link")
             }
-            Link(destination: URL(string: "https://github.com/yananw-pub/Flicker/issues")!) {
+            Link(destination: URL(string: "https://github.com/Van426326/Flicker/issues")!) {
                 Label("反馈问题", systemImage: "exclamationmark.bubble")
             }
         }
@@ -77,7 +77,7 @@ struct AboutView: View {
 
     private var copyrightSection: some View {
         VStack(spacing: 4) {
-            Text("Copyright © 2026 wangyanan")
+            Text("Copyright © 2026 van426326")
                 .font(.caption)
                 .foregroundStyle(.tertiary)
             Text("MIT License")

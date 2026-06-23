@@ -66,7 +66,7 @@ xcodebuild -project Flicker.xcodeproj -scheme Flicker -configuration Debug build
 
 ```bash
 ./scripts/build_dmg.sh
-# 产物位于 dist/Flicker.dmg
+# 产物位于 dist/RightKit-<version>.dmg
 ```
 
 ### 首次启用扩展
@@ -81,10 +81,10 @@ xcodebuild -project Flicker.xcodeproj -scheme Flicker -configuration Debug build
 
 | 配置项 | 当前值 | 文件位置 |
 |--------|--------|----------|
-| Bundle Identifier（App） | `com.wangyanan.flicker` | `project.pbxproj` |
-| Bundle Identifier（Extension） | `com.wangyanan.flicker.extension` | `project.pbxproj` |
-| App Group | `group.com.wangyanan.flicker` | `Shared/SharedStore.swift` |
-| URL Scheme | `flicker` | `Resources/Info.plist` |
+| Bundle Identifier（App） | `com.van426326.rightkit` | `project.pbxproj` |
+| Bundle Identifier（Extension） | `com.van426326.rightkit.extension` | `project.pbxproj` |
+| App Group | `group.com.van426326.rightkit` | `FlickerExtension/FlickerExtension.entitlements` |
+| URL Scheme | `RightKit` | `Resources/Info.plist` |
 
 > **提示：** App Group 需要在 Apple Developer 后台注册后才能使用。本地开发可使用 ad-hoc 签名（`CODE_SIGN_IDENTITY = "-"`），无需开发者账号。
 

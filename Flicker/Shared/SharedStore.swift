@@ -10,7 +10,7 @@ import Foundation
 import os
 
 /// 配置读写。App 与扩展共享一个固定路径文件。
-/// 路径：~/Library/Application Support/Flicker/app_entries.json
+/// 路径：~/Library/Application Support/RightKit/app_entries.json
 ///
 /// 关键点：沙盒扩展里 `urls(for: .applicationSupportDirectory)` 与
 /// `homeDirectoryForCurrentUser` 都返回沙盒容器路径而非真实主目录。
@@ -18,8 +18,8 @@ import os
 enum SharedStore {
     static let configFileName = "app_entries.json"
     static let menuSettingsFileName = "menu_settings.json"
-    static let appSupportSubdir = "Flicker"
-    private static let logger = Logger(subsystem: "com.wangyanan.flicker", category: "SharedStore")
+    static let appSupportSubdir = "RightKit"
+    private static let logger = Logger(subsystem: "com.van426326.rightkit", category: "SharedStore")
 
     /// 真实用户主目录（不受沙盒容器重定向影响）。
     private static var realHomeDirectory: URL? {

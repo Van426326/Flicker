@@ -1,7 +1,7 @@
 #!/bin/zsh
-# 打包 Flicker.dmg
+# 打包 RightKit.dmg
 # 用法: ./scripts/build_dmg.sh
-# 产物: dist/Flicker-<version>.dmg
+# 产物: dist/RightKit-<version>.dmg
 set -euo pipefail
 
 PROJECT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
@@ -9,7 +9,7 @@ PROJECT="$PROJECT_DIR/Flicker.xcodeproj"
 SCHEME="Flicker"
 CONFIG="Release"
 BUILD_DIR="$PROJECT_DIR/build"
-APP_PATH="$BUILD_DIR/Flicker.app"
+APP_PATH="$BUILD_DIR/RightKit.app"
 echo "==> Release 构建"
 # 手动清理 build 目录（xcodebuild clean 无法删除自定义 CONFIGURATION_BUILD_DIR）
 rm -rf "$BUILD_DIR"
@@ -26,7 +26,7 @@ fi
 APP_VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" "$APP_PATH/Contents/Info.plist")
 echo "==> 应用版本: $APP_VERSION"
 
-DMG_NAME="Flicker-${APP_VERSION}.dmg"
+DMG_NAME="RightKit-${APP_VERSION}.dmg"
 DMG_PATH="$PROJECT_DIR/dist/$DMG_NAME"
 
 echo "==> 准备 DMG 暂存目录"
@@ -39,7 +39,7 @@ ln -s /Applications "$STAGING/Applications"
 echo "==> 生成 DMG"
 mkdir -p "$(dirname "$DMG_PATH")"
 rm -f "$DMG_PATH"
-hdiutil create -volname "Flicker" -srcfolder "$STAGING" \
+hdiutil create -volname "RightKit" -srcfolder "$STAGING" \
   -fs "HFS+" -format "UDZO" -imagekey "zlib-level=9" "$DMG_PATH"
 
 echo "==> 完成: $DMG_PATH"

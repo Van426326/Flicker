@@ -66,7 +66,7 @@ xcodebuild -project Flicker.xcodeproj -scheme Flicker -configuration Debug build
 
 ```bash
 ./scripts/build_dmg.sh
-# Output: dist/Flicker.dmg
+# Output: dist/RightKit-<version>.dmg
 ```
 
 ### Enable the Extension
@@ -81,10 +81,10 @@ If you fork this project and plan to build your own copy, update these values to
 
 | Setting | Current Value | Location |
 |---------|---------------|----------|
-| Bundle Identifier (App) | `com.wangyanan.flicker` | `project.pbxproj` |
-| Bundle Identifier (Extension) | `com.wangyanan.flicker.extension` | `project.pbxproj` |
-| App Group | `group.com.wangyanan.flicker` | `Shared/SharedStore.swift` |
-| URL Scheme | `flicker` | `Resources/Info.plist` |
+| Bundle Identifier (App) | `com.van426326.rightkit` | `project.pbxproj` |
+| Bundle Identifier (Extension) | `com.van426326.rightkit.extension` | `project.pbxproj` |
+| App Group | `group.com.van426326.rightkit` | `FlickerExtension/FlickerExtension.entitlements` |
+| URL Scheme | `RightKit` | `Resources/Info.plist` |
 
 > **Tip:** App Group must be registered in the Apple Developer portal. For local development, ad-hoc signing (`CODE_SIGN_IDENTITY = "-"`) works without a developer account.
 
