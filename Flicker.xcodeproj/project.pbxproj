@@ -29,6 +29,8 @@
 		A10103 /* FinderSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20101; };
 		A10104 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A20102; };
 		A10105 /* MenuSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20017; };
+		A10016 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20019; };
+		A10106 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20019; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,7 @@
 		A20014 /* AppMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMenuBar.swift; sourceTree = "<group>"; };
 		A20015 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		A20018 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		A20019 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		A20007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A20008 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A20009 /* Flicker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Flicker.entitlements; sourceTree = "<group>"; };
@@ -113,6 +116,7 @@
 				A20001 /* AppEntry.swift */,
 				A20002 /* SharedStore.swift */,
 				A20017 /* MenuSettings.swift */,
+				A20019 /* Logger.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -224,6 +228,7 @@
 				A10004 /* AppEntryStore.swift in Sources */,
 				A10005 /* ContentView.swift in Sources */,
 				A10006 /* AppEntryEditor.swift in Sources */,
+				A10016 /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -235,6 +240,7 @@
 				A10102 /* SharedStore.swift in Sources */,
 				A10105 /* MenuSettings.swift in Sources */,
 				A10103 /* FinderSync.swift in Sources */,
+				A10106 /* Logger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,9 +30,28 @@ struct SettingsView: View {
                 Toggle("复制文件名", isOn: $settings.showCopyFileName)
                     .help("在右键菜单中显示「复制文件名」")
             }
+            Section("新建文件") {
+                ForEach(NewFileType.defaults) { fileType in
+                    Toggle(fileType.name + " (." + fileType.ext + ")", isOn: Binding(
+                        get: { settings.newFileEnabledTypes.contains(fileType.id) },
+                        set: { enabled in
+                            if enabled {
+                                if !settings.newFileEnabledTypes.contains(fileType.id) {
+                                    settings.newFileEnabledTypes.append(fileType.id)
+                                }
+                            } else {
+                                settings.newFileEnabledTypes.removeAll { $0 == fileType.id }
+                            }
+                        }
+                    ))
+                    .help("在右键菜单中显示新建「\(fileType.name)」选项")
+                }
+                Toggle("创建后自动打开", isOn: $settings.newFileAutoOpen)
+                    .help("新建文件后自动用默认应用打开")
+            }
         }
         .formStyle(.grouped)
         .navigationTitle("设置")
-        .frame(width: 400, height: 340)
+        .frame(width: 400, height: 480)
     }
 }

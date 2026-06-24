@@ -27,6 +27,13 @@ final class AppSettings: ObservableObject {
             showCopyFileName: showCopyFileName
         ))
     }
+    
+    private func persistNewFileSettings() {
+        SharedStore.saveNewFileSettings(NewFileSettings(
+            enabledTypes: newFileEnabledTypes,
+            autoOpen: newFileAutoOpen
+        ))
+    }
 
     private let defaults = UserDefaults.standard
 
@@ -66,6 +73,17 @@ final class AppSettings: ObservableObject {
     @Published var showCopyFileName: Bool = true {
         didSet { persistMenuSettings() }
     }
+    
+    // MARK: - 新建文件设置（通过 SharedStore 与扩展共享）
+    
+    /// 启用的文件类型ID列表。
+    @Published var newFileEnabledTypes: [String] = ["txt", "md"] {
+        didSet { persistNewFileSettings() }
+    }
+    /// 创建后自动打开。
+    @Published var newFileAutoOpen: Bool = true {
+        didSet { persistNewFileSettings() }
+    }
 
     init() {
         showMenuBarIcon = (defaults.object(forKey: Key.menuBar) as? Bool) ?? true
@@ -76,6 +94,10 @@ final class AppSettings: ObservableObject {
         showCopyAbsolutePath = menuSettings.showCopyAbsolutePath
         showCopyRelativePath = menuSettings.showCopyRelativePath
         showCopyFileName = menuSettings.showCopyFileName
+        
+        let newFileSettings = SharedStore.loadNewFileSettings()
+        newFileEnabledTypes = newFileSettings.enabledTypes
+        newFileAutoOpen = newFileSettings.autoOpen
     }
 
     /// 应用全部设置（正常启动或用户重新打开应用时调用）。
